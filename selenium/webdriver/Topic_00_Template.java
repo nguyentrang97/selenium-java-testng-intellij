@@ -43,4 +43,9 @@ public class Topic_00_Template {
     public void TC_03_() {
 
     }
+
+    @AfterClass
+    public void afterClass() {
+        driver.quit();
+    }
 }
