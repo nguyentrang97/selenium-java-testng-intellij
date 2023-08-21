@@ -70,11 +70,13 @@ public class Topic_02_Selenium_Locator {
         driver.findElement(By.partialLinkText("vendor account"));
         driver.findElement(By.partialLinkText("for vendor"));
     }
+
+    @Test
     public void TC_07_Css() {
         //CSS với ID
         driver.findElement(By.cssSelector("input[id='FirstName']"));
-        driver.findElement(By.name("input#FirstName"));
-        driver.findElement(By.name("#FirstName"));
+        driver.findElement(By.cssSelector("input#FirstName"));
+        driver.findElement(By.cssSelector("#FirstName"));
 
         //CSS với Class
         driver.findElement(By.cssSelector("div[class='header-menu']"));
@@ -88,7 +90,7 @@ public class Topic_02_Selenium_Locator {
         driver.findElement(By.cssSelector("input"));
 
         //CSS với link
-        driver.findElement(By.cssSelector("a[href='customer/addresses']"));
+        driver.findElement(By.cssSelector("a[href='/customer/addresses']"));
 
         //CSS với partial link
         driver.findElement(By.cssSelector("a[href*='addresses']"));  //giữa
@@ -96,6 +98,7 @@ public class Topic_02_Selenium_Locator {
         //driver.findElement(By.cssSelector("a[href$='addresses']"));  //cuối
     }
 
+    @Test
     public void TC_08_Xpath() {
         //Xpath với ID
         driver.findElement(By.xpath("//input[@id='FirstName']"));
@@ -110,12 +113,12 @@ public class Topic_02_Selenium_Locator {
         driver.findElement(By.xpath("//input"));
 
         //Xpath với link
-        driver.findElement(By.xpath("//a[@href='customer/addresses']"));
+        driver.findElement(By.xpath("//a[@href='/customer/addresses']"));
         driver.findElement(By.xpath("//a[text()='Addresses']"));
 
         //Xpath với partial link
-        driver.findElement(By.xpath("a[contains(@href,'addresses')]"));
-        driver.findElement(By.xpath("a[contains(text(),'Addresses']"));
+        driver.findElement(By.xpath("//a[contains(@href,'addresses')]"));
+        driver.findElement(By.xpath("//a[contains(text(),'Addresses')]"));
     }
     @AfterClass
     public void afterClass() {
