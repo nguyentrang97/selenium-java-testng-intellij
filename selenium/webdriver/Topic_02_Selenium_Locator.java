@@ -26,7 +26,7 @@ public class Topic_02_Selenium_Locator {
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
-        driver.get("https://www.facebook.com/");
+        driver.get("https://demo.nopcommerce.com/register");
     }
 
 
@@ -37,7 +37,9 @@ public class Topic_02_Selenium_Locator {
 
     @Test
     public void TC_01_ID() {
-
+        //Tìm element có ID = FirstName
+        driver.findElement(By.id("FirstName")).sendKeys("Trang Nguyen");
+        //System.out.println(driver.findElement(By.id("FirstName")));
     }
 
     @Test
