@@ -19,7 +19,7 @@ public class Topic_01_Data_Type {
     //Số nguyên: byte - short - int - long
     // Không có phần thập phân: Số nhân viên trong công ty/Số học sinh trong lớp...
     byte bNumber = 40;
-    shot sNumber = 3000;
+    short sNumber = 3000;
     int iNumber = 1565555555;
     long lNumber = 234343400;
 
