@@ -146,11 +146,20 @@ public class Topic_001_Xpath_Demo {
         WebElement denNgay = driver.findElement(By.xpath("//input[@id='datepicker-4']"));
         denNgay.sendKeys("24082023");
 
-        //WebElement cbxStatus = driver.findElement(By.xpath("//div[@class='ng-select-container ng-has-value']"));
-        //cbxStatus.click();
+        WebElement lblPage = driver.findElement(By.xpath("//div[contains(text(),'Duyệt chuyến hoạt động')]"));
+        lblPage.click();
 
-        //WebElement selectStatus = driver.findElement(By.xpath("//div[@id='a3b64cd3c51f-1']"));
-        //selectStatus.click();
+        Thread.sleep(5000);
+
+        WebElement cbxStatus = driver.findElement(By.xpath("//label[contains(text(),'Đã duyệt')]"));
+        cbxStatus.click();
+
+        Thread.sleep(1000);
+
+        WebElement selectStatus = driver.findElement(By.xpath("//div[@id='a3b64cd3c51f-1']"));
+        selectStatus.click();
+
+        Thread.sleep(1000);
 
         WebElement btnSearch = driver.findElement(By.xpath("//div[@class='col-sm-auto report-controls-col ng-star-inserted pr-0']//button"));
         btnSearch.click();
