@@ -30,7 +30,7 @@ public class Topic_001_Xpath_Demo {
         driver.manage().window().maximize();
     }
 
-    @Test
+
     public void TC_01_Login() {
         driver.get("https://gps3.binhanh.vn/auth/login");
         WebElement txtUsername = driver.findElement(By.xpath("//input[@name='username']"));
@@ -45,7 +45,7 @@ public class Topic_001_Xpath_Demo {
         Assert.assertEquals(driver.getCurrentUrl(),"https://gps3.binhanh.vn/online");
 
     }
-    @Test
+
     public void TC_02_CloseAds() {
         driver.get("https://gps3.binhanh.vn/auth/login");
         WebElement txtUsername = driver.findElement(By.xpath("//input[@name='username']"));
@@ -90,7 +90,7 @@ public class Topic_001_Xpath_Demo {
 
     }
 
-    @Test
+
     public void TC_04_MenuKPI() {
         driver.get("https://gps3.binhanh.vn/auth/login");
         WebElement txtUsername = driver.findElement(By.xpath("//input[@name='username']"));
@@ -110,8 +110,56 @@ public class Topic_001_Xpath_Demo {
         WebElement menuDuyetChuyen = driver.findElement(By.xpath("//ul[@id='nav-auto']//a[@href='/kpi-driver/report-trip-review']"));
 
     }
+
+    @Test
+    public void TC_05_Search() {
+        driver.get("https://gps3.binhanh.vn/auth/login");
+        WebElement txtUsername = driver.findElement(By.xpath("//input[@name='username']"));
+        txtUsername.sendKeys("kpibaoyen");
+
+        WebElement txtPassword = driver.findElement(By.xpath("//input[@name='password']"));
+        txtPassword.sendKeys("123@123a");
+
+        WebElement btnLogin = driver.findElement(By.xpath("//form//button"));
+        btnLogin.click();
+
+        WebElement btnCloseAds = driver.findElement(By.xpath("//div[@class='close-button']"));
+        btnCloseAds.click();
+
+        WebElement menuKPIlaixe = driver.findElement(By.xpath("//ul[@id='nav-auto']//a[contains(text(),'KPI Lái xe')]"));
+        menuKPIlaixe.click();
+
+        WebElement menuDuyetChuyen = driver.findElement(By.xpath("//ul[@id='nav-auto']//a[contains(text(),'Duyệt chuyến hoạt động')]"));
+        menuDuyetChuyen.click();
+
+        WebElement tuGio = driver.findElement(By.xpath("//input[@id='timepicker-1']"));
+        tuGio.sendKeys("0812");
+
+        WebElement tuNgay = driver.findElement(By.xpath("//input[@id='datepicker-2']"));
+        tuNgay.sendKeys("23082023");
+
+        WebElement denGio = driver.findElement(By.xpath("//input[@id='timepicker-3']"));
+        denGio.sendKeys("1505");
+
+        WebElement denNgay = driver.findElement(By.xpath("//input[@id='datepicker-4']"));
+        denNgay.sendKeys("24082023");
+
+        WebElement cbxStatus = driver.findElement(By.xpath("//div[@class='ng-select-container ng-has-value']"));
+        cbxStatus.click();
+
+        WebElement selectStatus = driver.findElement(By.xpath("//div[@id='a3b64cd3c51f-1']"));
+        selectStatus.click();
+
+        WebElement btnSearch = driver.findElement(By.xpath("//div[@class='col-sm-auto report-controls-col ng-star-inserted pr-0']//button"));
+        btnSearch.click();
+
+        //*[@id="content-right"]/div/div[2]/div/div/div[2]/div[1]/div[6]/button
+
+        //div[@id='a3b64cd3c51f-1']//label
+
+    }
     @AfterClass
     public void afterClass() {
-        driver.quit();
+        //driver.quit();
     }
 }
