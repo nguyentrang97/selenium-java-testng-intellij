@@ -9,6 +9,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import javax.print.DocFlavor;
 import java.util.concurrent.TimeUnit;
 
 public class Topic_001_Xpath_Demo {
@@ -61,7 +62,7 @@ public class Topic_001_Xpath_Demo {
 
     }
 
-    @Test
+    //@Test
     public void TC_03_Logout() {
         driver.get("https://gps3.binhanh.vn/auth/login");
         WebElement txtUsername = driver.findElement(By.xpath("//input[@name='username']"));
@@ -89,6 +90,26 @@ public class Topic_001_Xpath_Demo {
 
     }
 
+    @Test
+    public void TC_04_MenuKPI() {
+        driver.get("https://gps3.binhanh.vn/auth/login");
+        WebElement txtUsername = driver.findElement(By.xpath("//input[@name='username']"));
+        txtUsername.sendKeys("kpibaoyen");
+
+        WebElement txtPassword = driver.findElement(By.xpath("//input[@name='password']"));
+        txtPassword.sendKeys("123@123a");
+
+        WebElement btnLogin = driver.findElement(By.xpath("//form//button"));
+        btnLogin.click();
+
+        WebElement btnCloseAds = driver.findElement(By.xpath("//div[@class='close-button']"));
+        btnCloseAds.click();
+
+        WebElement menuKPIlaixe = driver.findElement(By.xpath("//ul[@id='nav-auto']//a[contains(text(),'KPI Lái xe')]"));
+
+        WebElement menuDuyetChuyen = driver.findElement(By.xpath("//ul[@id='nav-auto']//a[@href='/kpi-driver/report-trip-review']"));
+
+    }
     @AfterClass
     public void afterClass() {
         driver.quit();
