@@ -155,10 +155,6 @@ public class Topic_001_Xpath_Demo {
         WebElement btnSearch = driver.findElement(By.xpath("//div[@class='col-sm-auto report-controls-col ng-star-inserted pr-0']//button"));
         btnSearch.click();
 
-        //*[@id="content-right"]/div/div[2]/div/div/div[2]/div[1]/div[6]/button
-
-        //div[@id='a3b64cd3c51f-1']//label
-
     }
     @AfterClass
     public void afterClass() {
