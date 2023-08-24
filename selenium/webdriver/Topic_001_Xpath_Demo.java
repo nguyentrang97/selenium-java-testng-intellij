@@ -112,7 +112,7 @@ public class Topic_001_Xpath_Demo {
     }
 
     @Test
-    public void TC_05_Search() {
+    public void TC_05_Search() throws InterruptedException {
         driver.get("https://gps3.binhanh.vn/auth/login");
         WebElement txtUsername = driver.findElement(By.xpath("//input[@name='username']"));
         txtUsername.sendKeys("kpibaoyen");
@@ -132,6 +132,8 @@ public class Topic_001_Xpath_Demo {
         WebElement menuDuyetChuyen = driver.findElement(By.xpath("//ul[@id='nav-auto']//a[contains(text(),'Duyệt chuyến hoạt động')]"));
         menuDuyetChuyen.click();
 
+        Thread.sleep(10000);
+
         WebElement tuGio = driver.findElement(By.xpath("//input[@id='timepicker-1']"));
         tuGio.sendKeys("0812");
 
@@ -144,11 +146,11 @@ public class Topic_001_Xpath_Demo {
         WebElement denNgay = driver.findElement(By.xpath("//input[@id='datepicker-4']"));
         denNgay.sendKeys("24082023");
 
-        WebElement cbxStatus = driver.findElement(By.xpath("//div[@class='ng-select-container ng-has-value']"));
-        cbxStatus.click();
+        //WebElement cbxStatus = driver.findElement(By.xpath("//div[@class='ng-select-container ng-has-value']"));
+        //cbxStatus.click();
 
-        WebElement selectStatus = driver.findElement(By.xpath("//div[@id='a3b64cd3c51f-1']"));
-        selectStatus.click();
+        //WebElement selectStatus = driver.findElement(By.xpath("//div[@id='a3b64cd3c51f-1']"));
+        //selectStatus.click();
 
         WebElement btnSearch = driver.findElement(By.xpath("//div[@class='col-sm-auto report-controls-col ng-star-inserted pr-0']//button"));
         btnSearch.click();
