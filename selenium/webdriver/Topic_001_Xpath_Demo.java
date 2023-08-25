@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.locators.RelativeLocator;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -30,7 +31,7 @@ public class Topic_001_Xpath_Demo {
         driver.manage().window().maximize();
     }
 
-
+    @Test
     public void TC_01_Login() {
         driver.get("https://gps3.binhanh.vn/auth/login");
         WebElement txtUsername = driver.findElement(By.xpath("//input[@name='username']"));
@@ -46,6 +47,7 @@ public class Topic_001_Xpath_Demo {
 
     }
 
+    @Test
     public void TC_02_CloseAds() {
         driver.get("https://gps3.binhanh.vn/auth/login");
         WebElement txtUsername = driver.findElement(By.xpath("//input[@name='username']"));
@@ -62,7 +64,7 @@ public class Topic_001_Xpath_Demo {
 
     }
 
-    //@Test
+    @Test
     public void TC_03_Logout() {
         driver.get("https://gps3.binhanh.vn/auth/login");
         WebElement txtUsername = driver.findElement(By.xpath("//input[@name='username']"));
@@ -90,7 +92,7 @@ public class Topic_001_Xpath_Demo {
 
     }
 
-
+    @Test
     public void TC_04_MenuKPI() {
         driver.get("https://gps3.binhanh.vn/auth/login");
         WebElement txtUsername = driver.findElement(By.xpath("//input[@name='username']"));
@@ -146,17 +148,23 @@ public class Topic_001_Xpath_Demo {
         WebElement denNgay = driver.findElement(By.xpath("//input[@id='datepicker-4']"));
         denNgay.sendKeys("24082023");
 
+        Thread.sleep(2000);
+
         WebElement lblPage = driver.findElement(By.xpath("//div[contains(text(),'Duyệt chuyến hoạt động')]"));
         lblPage.click();
 
         Thread.sleep(5000);
 
-        WebElement cbxStatus = driver.findElement(By.xpath("//label[contains(text(),'Đã duyệt')]"));
+        WebElement lblStatus = driver.findElement(By.xpath("//div[contains(text(),'Trạng thái')]"));//span[@class='ng-arrow-wrapper']
+
+        WebElement cbxStatus = driver.findElement(RelativeLocator.with(By.xpath("//div[@class='row report-controls ng-star-inserted']//div[@class='ng-select-container ng-has-value']//div[@class='ng-input']"))//div[@class='position-relative']
+                .below(lblStatus)
+        );
         cbxStatus.click();
 
         Thread.sleep(1000);
 
-        WebElement selectStatus = driver.findElement(By.xpath("//div[@id='a3b64cd3c51f-1']"));
+        WebElement selectStatus = driver.findElement(By.xpath("//div[@role='option']//*[contains(text(),'Đã duyệt')]"));
         selectStatus.click();
 
         Thread.sleep(1000);
@@ -164,8 +172,25 @@ public class Topic_001_Xpath_Demo {
         WebElement btnSearch = driver.findElement(By.xpath("//div[@class='col-sm-auto report-controls-col ng-star-inserted pr-0']//button"));
         btnSearch.click();
 
+
     }
-    @AfterClass
+
+    @Test
+    public void TC_06_ClickMyAccount() {
+        driver.get("http://live.techpanda.org/index.php/customer/account/login/");
+
+        //Click Account
+        WebElement accountHeader = driver.findElement(By.xpath("//div[@class='account-cart-wrapper']//span[contains(text(),'Account')]"));
+        accountHeader.click();
+
+
+        //Click My Account
+        WebElement myAccountHeader = driver.findElement(By.xpath("//div[@id='header-account']//a[@title='My Account']"));
+        myAccountHeader.click();
+    }
+
+
+        @AfterClass
     public void afterClass() {
         //driver.quit();
     }
