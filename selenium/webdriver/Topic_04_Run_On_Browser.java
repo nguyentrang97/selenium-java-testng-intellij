@@ -22,7 +22,6 @@ public class Topic_04_Run_On_Browser {
         } else {
             System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver");
         }
-
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
@@ -34,11 +33,6 @@ public class Topic_04_Run_On_Browser {
 
     @Test
     public void TC_02_Run_FireFox() {
-        if (osName.contains("Windows")) {
-            System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
-        } else {
-            System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
-        }
 
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -51,11 +45,6 @@ public class Topic_04_Run_On_Browser {
 
     @Test
     public void TC_03_Run_Edge() {
-        if (osName.contains("Windows")) {
-            System.setProperty("webdriver.msedge.driver", projectPath + "\\browserDrivers\\msedgedriver.exe");
-        } else {
-            System.setProperty("webdriver.msedge.driver", projectPath + "/browserDrivers/msedgedriver");
-        }
 
         driver = new EdgeDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
