@@ -10,13 +10,12 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 
-import javax.lang.model.element.Element;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 
-public class Topic_05_Web_Browser {
+public class Topic_05_WebBrowser {
     WebDriver driver;
     String projectPath = System.getProperty("user.dir");
     String osName = System.getProperty("os.name");
