@@ -199,7 +199,7 @@ public class Topic_06_WebElement_Exercise_P1 {
     }
 
     @Test
-    public void TC_04_MailChimp() {
+    public void TC_04_Register_MailChimp() {
         driver.get("https://login.mailchimp.com/signup/");
         driver.findElement(email).sendKeys("trang@gmail.com");
         driver.findElement(pass).sendKeys("aaa");
