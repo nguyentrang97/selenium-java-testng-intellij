@@ -28,6 +28,10 @@ public class Topic_06_WebElement_Exercise_P1 {
     By jobRole3Dropdown = By.id("job3");
     By interestCheckboxDisable = By.id("check-disbaled");
     By slider2 = By.id("slider-2");
+    By javaCheckbox = By.id("java");
+
+    By email = By.id("email");
+    By pass = By.id("new_password");
 
 
     @BeforeClass
@@ -41,11 +45,13 @@ public class Topic_06_WebElement_Exercise_P1 {
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.manage().window().maximize();
+
+        driver.get("https://automationfc.github.io/basic-form/index.html");
     }
 
     @Test
     public void TC_01_Displayed() {
-        driver.get("https://automationfc.github.io/basic-form/index.html");
+        //driver.get("https://automationfc.github.io/basic-form/index.html");
 
         if (driver.findElement(emailTextbox).isDisplayed()) {
             System.out.println("Email textbox is displayed");
@@ -78,7 +84,7 @@ public class Topic_06_WebElement_Exercise_P1 {
 
     @Test
     public void TC_02_Enable() {
-        driver.get("https://automationfc.github.io/basic-form/index.html");
+        //driver.get("https://automationfc.github.io/basic-form/index.html");
 
         if (driver.findElement(emailTextbox).isEnabled()) {
             System.out.println("Email textbox is enabled");
@@ -168,21 +174,97 @@ public class Topic_06_WebElement_Exercise_P1 {
 
     @Test
     public void TC_03_Selected() {
-        driver.get("");
+        driver.findElement(under18RadioButton).click();
+        driver.findElement(javaCheckbox).click();
 
+        if (driver.findElement(under18RadioButton).isSelected()) {
+            System.out.println("Under 18 radio is selected");
+        } else {
+            System.out.println("Under 18 radio is not selected");
+        }
+
+        if (driver.findElement(javaCheckbox).isSelected()) {
+            System.out.println("Java checkbox is selected");
+        } else {
+            System.out.println("Java checkbox is not selected");
+        }
+
+        driver.findElement(javaCheckbox).click();
+        if (driver.findElement(javaCheckbox).isSelected()) {
+            System.out.println("Java checkbox is selected");
+        } else {
+            System.out.println("Java checkbox is not selected");
+        }
 
     }
 
     @Test
     public void TC_04_MailChimp() {
-        driver.get("http://live.techpanda.org/");
-        driver.findElement(By.cssSelector("div.footer a[title='My Account']")).click();
+        driver.get("https://login.mailchimp.com/signup/");
+        driver.findElement(email).sendKeys("trang@gmail.com");
+        driver.findElement(pass).sendKeys("aaa");
 
-        Assert.assertTrue(driver.getPageSource().contains("Login or Create an Account"));
+        sleepInSecond(2);
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='lowercase-char completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='uppercase-char not-completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='number-char not-completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='special-char not-completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='8-char not-completed']")).isDisplayed());
 
-        driver.findElement(By.cssSelector("form#login-form a[title='Create an Account']")).click();
+        driver.findElement(pass).clear();
+        driver.findElement(pass).sendKeys("AAAA");
+        sleepInSecond(2);
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='lowercase-char not-completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='uppercase-char completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='number-char not-completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='special-char not-completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='8-char not-completed']")).isDisplayed());
 
-        Assert.assertTrue(driver.getPageSource().contains("Create an Account"));
+        driver.findElement(pass).clear();
+        driver.findElement(pass).sendKeys("12345");
+        sleepInSecond(2);
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='lowercase-char not-completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='uppercase-char not-completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='number-char completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='special-char not-completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='8-char not-completed']")).isDisplayed());
+
+        driver.findElement(pass).clear();
+        driver.findElement(pass).sendKeys("@#$");
+        sleepInSecond(2);
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='lowercase-char not-completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='uppercase-char not-completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='number-char not-completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='special-char completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='8-char not-completed']")).isDisplayed());
+
+        driver.findElement(pass).clear();
+        driver.findElement(pass).sendKeys("Aa1@");
+        sleepInSecond(2);
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='lowercase-char completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='uppercase-char completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='number-char completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='special-char completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='8-char not-completed']")).isDisplayed());
+
+        driver.findElement(pass).clear();
+        driver.findElement(pass).sendKeys("A564565");
+        sleepInSecond(2);
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='lowercase-char not-completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='uppercase-char completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='number-char completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='special-char not-completed']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector("li[class='8-char not-completed']")).isDisplayed());
+
+
+        driver.findElement(pass).clear();
+        driver.findElement(pass).sendKeys("A564565@a");
+        sleepInSecond(2);
+        Assert.assertFalse(driver.findElement(By.cssSelector("li[class='lowercase-char completed']")).isDisplayed());
+        Assert.assertFalse(driver.findElement(By.cssSelector("li[class='uppercase-char completed']")).isDisplayed());
+        Assert.assertFalse(driver.findElement(By.cssSelector("li[class='number-char completed']")).isDisplayed());
+        Assert.assertFalse(driver.findElement(By.cssSelector("li[class='special-char completed']")).isDisplayed());
+        Assert.assertFalse(driver.findElement(By.cssSelector("li[class='8-char completed']")).isDisplayed());
 
     }
 
@@ -197,6 +279,6 @@ public class Topic_06_WebElement_Exercise_P1 {
 
     @AfterClass
     public void afterClass() {
-        //driver.quit();
+        driver.quit();
     }
 }
