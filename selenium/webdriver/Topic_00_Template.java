@@ -1,5 +1,6 @@
 package webdriver;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -44,6 +45,11 @@ public class Topic_00_Template {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public int getRandomNumber(){
+        Random ran = new Random();
+        return ran.nextInt(99999);
     }
 
 
