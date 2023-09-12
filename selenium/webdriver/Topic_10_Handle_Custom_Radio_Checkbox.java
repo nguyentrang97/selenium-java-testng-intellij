@@ -96,8 +96,8 @@ public class Topic_10_Handle_Custom_Radio_Checkbox {
         driver.get("https://tiemchungcovid19.gov.vn/portal/register-person");
         sleepInSecond(3);
 
-        /* Case 4 */
         //Thẻ input bị ẩn nhưng vẫn dùng để click
+        /* Case 4 */
         //Hàm click() của WebElement nó sẽ không thao tác vào element bị ẩn được
         //  ==> Thẻ element must be visible and it must have a height and width greater then 0.
 
@@ -109,7 +109,7 @@ public class Topic_10_Handle_Custom_Radio_Checkbox {
         By radioButton = By.xpath("//div[text()='Đăng ký cho người thân']/preceding-sibling::div/input");
 
         //Thao tác chọn
-        jsExecutor.executeScript("arguments[0].click();",driver.findElement(radioButton));
+        jsExecutor.executeScript("arguments[0].click();", driver.findElement(radioButton));
         sleepInSecond(3);
 
         //arguments[0]    => element 1
@@ -148,10 +148,9 @@ public class Topic_10_Handle_Custom_Radio_Checkbox {
         Assert.assertEquals(driver.findElement(checkbox).getAttribute("aria-checked"), "true");
 
 
-
     }
 
-    public void sleepInSecond (long timeInSecond){
+    public void sleepInSecond(long timeInSecond) {
         try {
             Thread.sleep(timeInSecond * 1000);
         } catch (InterruptedException e) {
@@ -159,7 +158,7 @@ public class Topic_10_Handle_Custom_Radio_Checkbox {
         }
     }
 
-    public int getRandomNumber(){
+    public int getRandomNumber() {
         Random ran = new Random();
         return ran.nextInt(99999);
     }
