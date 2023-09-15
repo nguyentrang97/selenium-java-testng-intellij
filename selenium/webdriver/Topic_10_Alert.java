@@ -12,7 +12,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.sql.Driver;
 import java.time.Duration;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
