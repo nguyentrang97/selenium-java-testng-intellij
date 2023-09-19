@@ -16,7 +16,7 @@ import java.time.Duration;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-public class Topic_10_Alert {
+public class Topic_10_Handle_Alert_AuthenticationAlert {
     WebDriver driver;
     Alert alert;
     WebDriverWait expliciWait;
