@@ -144,10 +144,6 @@ public class Topic_13_Action_Part_P3 {
         Assert.assertTrue(driver.findElement(By.xpath("//div[@id='column-a']/header[text()='B']")).isDisplayed());
         Assert.assertTrue(driver.findElement(By.xpath("//div[@id='column-b']/header[text()='A']")).isDisplayed());
 
-
-
-
-
     }
 
     public void sleepInSecond (long timeInSecond){
