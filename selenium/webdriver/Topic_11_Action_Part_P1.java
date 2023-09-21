@@ -27,12 +27,12 @@ public class Topic_11_Action_Part_P1 {
     @BeforeClass
     public void beforeClass() {
         if (osName.contains("Windows")) {
-            System.setProperty("webdriver.chrome.driver", projectPath + "\\browserDrivers\\chromedriver.exe");
+            System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
         } else {
-            System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver");
+            System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
         }
 
-        driver = new ChromeDriver();
+        driver = new FirefoxDriver();
         action = new Actions(driver);
         jsExecutor = (JavascriptExecutor) driver;
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -53,16 +53,16 @@ public class Topic_11_Action_Part_P1 {
     @Test
     public void TC_02_Hover() {
         driver.get("https://www.myntra.com/");
-        sleepInSecond(10);
+        sleepInSecond(5);
 
         // Hover và KIDS
         action.moveToElement(driver.findElement(By.xpath("//div[@class='desktop-navLink']//a[text()='Kids']"))).perform();
-        sleepInSecond(5);
+        sleepInSecond(2);
 
-        driver.findElement(By.xpath("//div[@class='desktop-navLink']//a[text()='Home & Bath']")).click();
-        sleepInSecond(3);
+        driver.findElement(By.xpath("//div[@class='desktop-navLink']//a[text()='Kids Accessories']")).click();
+        sleepInSecond(2);
 
-        Assert.assertEquals(driver.findElement(By.cssSelector("span.breadcrumbs-crumb")).getText(),"Kids Home Bath");
+        Assert.assertEquals(driver.findElement(By.cssSelector("span.breadcrumbs-crumb")).getText(),"Kids Accessories");
     }
 
     @Test
