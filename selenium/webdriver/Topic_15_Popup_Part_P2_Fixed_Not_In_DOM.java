@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -82,7 +83,33 @@ public class Topic_15_Popup_Part_P2_Fixed_Not_In_DOM {
     public void TC_02_Fixed_Not_In_DOM_Facebook() {
         driver.get("https://www.facebook.com/");
 
+        By createAccountPopup = By.xpath("//div[text()='Sign Up']/parent::div/parent::div");
 
+        // Verify Create Account popup ko hiển thị
+        Assert.assertEquals(driver.findElements(createAccountPopup).size(),0);
+
+        driver.findElement(By.cssSelector("a[data-testid='open-registration-form-button']")).click();
+        sleepInSecond(2);
+
+        // Verify Create Account popup hiển thị
+        Assert.assertEquals(driver.findElements(createAccountPopup).size(),1);
+
+        driver.findElement(By.name("firstname")).sendKeys("Hoa");
+        driver.findElement(By.name("lastname")).sendKeys("Mai");
+        driver.findElement(By.name("reg_email__")).sendKeys("0987654321");
+        driver.findElement(By.name("reg_passwd__")).sendKeys("123456789");
+        new Select(driver.findElement(By.id("day"))).selectByVisibleText("12");
+        new Select(driver.findElement(By.id("month"))).selectByVisibleText("Jun");
+        new Select(driver.findElement(By.id("year"))).selectByVisibleText("2002");
+
+        driver.findElement(By.xpath("//label[text()='Female']/following-sibling::input")).click();
+        sleepInSecond(2);
+
+        driver.findElement(By.xpath("//div[text()='Sign Up']/parent::div/preceding-sibling::img")).click();
+        sleepInSecond(2);
+
+        // Verify Create Account popup ko hiển thị
+        Assert.assertEquals(driver.findElements(createAccountPopup).size(),0);
 
     }
 
@@ -102,6 +129,6 @@ public class Topic_15_Popup_Part_P2_Fixed_Not_In_DOM {
 
     @AfterClass
     public void afterClass() {
-        //driver.quit();
+        driver.quit();
     }
 }
