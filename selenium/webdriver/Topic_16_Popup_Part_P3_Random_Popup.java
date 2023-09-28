@@ -69,7 +69,6 @@ public class Topic_16_Popup_Part_P3_Random_Popup {
 
         }
 
-
         String articleName = "Agile Testing Explained";
         driver.findElement(By.id("search-input")).sendKeys(articleName);
         driver.findElement(By.id("search-submit")).click();
@@ -81,10 +80,50 @@ public class Topic_16_Popup_Part_P3_Random_Popup {
     }
 
     @Test
-    public void TC_02_() {
-        driver.get("");
+    public void TC_02_Random_In_DOM() {
+        driver.get("https://vnk.edu.vn/");
+        sleepInSecond(20);
 
+        By popup = By.cssSelector("div.tve-leads-conversion-object");
 
+        if (driver.findElement(popup).isDisplayed()){
+            // Close popup này đi
+            driver.findElement(By.cssSelector("svg.tcb-icon")).click();
+            sleepInSecond(2);
+        }
+
+        driver.findElement(By.xpath("//button[text()='Danh sách khóa học']")).click();
+        sleepInSecond(3);
+
+        Assert.assertEquals(driver.getTitle(),"Lịch khai giảng các khóa học tại VNK EDU | VNK EDU");
+
+    }
+
+    @Test
+    public void TC_03_Random_Not_In_DOM() {
+        driver.get("https://dehieu.vn/");
+        sleepInSecond(10);
+
+        By popup = By.cssSelector("div.popup-content");
+
+        if (driver.findElements(popup).size() > 0){
+            driver.findElement(By.name("name")).sendKeys("Trang Nguyen");
+            driver.findElement(By.name("email")).sendKeys("Trangnguyen@gmail.com");
+            driver.findElement(By.name("phone")).sendKeys("0987654321");
+            driver.findElement(By.id("close-popup")).click();
+            sleepInSecond(2);
+        }
+
+        driver.findElement(By.xpath("//a[text()='Tất cả khóa học']")).click();
+        sleepInSecond(3);
+
+        String courses = "Khóa học thiết kế hệ thống M&E - Căn hộ, biệt thự";
+
+        driver.findElement(By.id("search-courses")).sendKeys(courses);
+        driver.findElement(By.id("search-course-button")).click();
+        sleepInSecond(3);
+
+        Assert.assertEquals(driver.findElement(By.cssSelector("h4.name-course")).getText(),courses);
 
     }
 
@@ -104,6 +143,6 @@ public class Topic_16_Popup_Part_P3_Random_Popup {
 
     @AfterClass
     public void afterClass() {
-        //driver.quit();
+        driver.quit();
     }
 }
